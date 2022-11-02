@@ -1,17 +1,16 @@
 #include <stdio.h>
 #include "ventasStruct.h"
 
-bool vacia(cabeceraVendedor lista);
-int primero(cabeceraVendedor lista);
-int anterior(int p, cabeceraVendedor lista);
-int siguiente(int p, cabeceraVendedor lista);
-int fin(cabeceraVendedor lista);
-void inserta(Vendedor x, int p, cabeceraVendedor &lista);
-Vendedor recupera(int p, cabeceraVendedor lista);
-int localiza(Vendedor x, cabeceraVendedor lista);
-//void imprime(cabeceraVendedor lista);
-void suprime(int p, cabeceraVendedor&lista);
-void anula(cabeceraVendedor&lista);
+bool vacia(cabeceraVendedor vendedor);
+int primero(cabeceraVendedor vendedor);
+int anterior(int p, cabeceraVendedor vendedor);
+int siguiente(int p, cabeceraVendedor vendedor);
+int fin(cabeceraVendedor vendedor);
+void inserta(Vendedor x, int p, cabeceraVendedor &vendedor);
+Vendedor recupera(int p, cabeceraVendedor vendedor);
+int localiza(Vendedor x, cabeceraVendedor vendedor);
+void suprime(int p, cabeceraVendedor&vendedor);
+void anula(cabeceraVendedor&vendedor);
 
 bool operator ==(Vendedor vendedor1, Vendedor vendedor2);
 void copiarVendedor(Vendedor &vendedor1, Vendedor vendedor2);

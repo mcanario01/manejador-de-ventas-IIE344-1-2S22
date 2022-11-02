@@ -2,7 +2,6 @@
 #include <string.h>
 #include "ventas.h"
 
-// Viernes 10/06
 bool vacia(cabeceraVendedor vendedor)
 {
 	return fin(vendedor)==primero(vendedor);
@@ -23,7 +22,6 @@ int siguiente(int p, cabeceraVendedor vendedor)
 	return p+1;
 }
 
-// Martes 14/06
 int fin(cabeceraVendedor vendedor)
 {
 	int c=1;
@@ -66,7 +64,6 @@ Vendedor recupera(int p, cabeceraVendedor vendedor)
 	return aux->dato;
 }
 
-
 int localiza(Vendedor x , cabeceraVendedor vendedor)
 {
 	for(int i = primero(vendedor) ; i < fin(vendedor) ; i = siguiente(i, vendedor))
@@ -78,20 +75,6 @@ int localiza(Vendedor x , cabeceraVendedor vendedor)
 	}
 	return fin(vendedor);
 }
- 
-
-// Viernes 17/06
-/*
-void imprime(cabeceraVendedor vendedor)
-{
-	for(int i = primero(vendedor) ; i < fin(vendedor) ; i = siguiente(i, vendedor))
-    {
-		Vendedor x = recupera(i,vendedor);
-		printf("[%d]-> ", x);
-	}
-	printf("*\n");
-}
-*/
 
 void suprime(int p, cabeceraVendedor &vendedor)
 {
@@ -128,7 +111,6 @@ bool operator ==(Vendedor vendedor1, Vendedor vendedor2)
 {
 	return vendedor1.cuenta == vendedor2.cuenta && !strcmp(vendedor1.nombre, vendedor2.nombre) && !strcmp(vendedor1.apellido, vendedor2.apellido) && !strcmp(vendedor1.rut, vendedor2.rut) && !strcmp(vendedor1.rut, vendedor2.rut) && vendedor1.telefono == vendedor2.telefono && !strcmp(vendedor1.direccion, vendedor2.direccion) && vendedor1.edad == vendedor2.edad && !strcmp(vendedor1.profesion, vendedor2.profesion) && vendedor1.deuda == vendedor2.deuda;
 } 
-
 
 void copiarVendedor(Vendedor &vendedor1, Vendedor vendedor2)
 {

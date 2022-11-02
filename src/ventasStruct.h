@@ -12,14 +12,22 @@ struct Vendedor
     int edad; 
     char profesion[30]; 
     long deuda;
-    //struct cabeceraCliente* clientes;
+    struct cabeceraCliente* clientes;
+    Vendedor()
+    {
+        cuenta = 0;
+        telefono = 0;
+        edad = 0;
+        deuda = 0;
+    }
 };
 
 struct cabeceraVendedor
 {
     int largo; 
     struct nodoVendedor* primero;
-	cabeceraVendedor(){
+	cabeceraVendedor()
+    {
 		primero=NULL;
 	}
 };
@@ -28,10 +36,12 @@ struct nodoVendedor
 {
     struct Vendedor dato; 
     struct nodoVendedor* sgte;
-	nodoVendedor(){
+	nodoVendedor()
+    {
 		sgte=NULL;
 	}
-	nodoVendedor(Vendedor x){
+	nodoVendedor(Vendedor x)
+    {
 		nodoVendedor();
 		dato=x;
 	}
@@ -39,7 +49,7 @@ struct nodoVendedor
 
 #endif
 
-/*
+
 #ifndef CLIENTE_STRUCT_H
 #define CLIENTE_STRUCT_H
 
@@ -54,15 +64,23 @@ struct Cliente
     char profesion[30]; 
     long deuda;
     char fechaCobro[11];
+    Cliente()
+    {
+        telefono = 0;
+        edad = 0;
+        deuda = 0;
+    }
 }; 
 
 struct nodoCliente{
     struct Cliente dato; 
     struct nodoCliente* sgte;
-	nodoCliente(){
+	nodoCliente()
+    {
 		sgte=NULL;
 	}
-	nodoCliente(Vendedor x){
+	nodoCliente(Cliente x)
+    {
 		nodoCliente();
 		dato=x;
 	}
@@ -71,11 +89,10 @@ struct nodoCliente{
 struct cabeceraCliente{
     int largo; 
     struct nodoCliente* primero;
-	cabeceraCliente(){
+	cabeceraCliente()
+    {
 		primero=NULL;
 	}
 }; 
 
 #endif
-
-*/

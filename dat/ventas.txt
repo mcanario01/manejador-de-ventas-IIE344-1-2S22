@@ -1,2 +1,4 @@
 
 V	Marcela	Ramirez	312983712	Mariano	20	0	Psico	239812	48102
+V	Roberto	Saldia	312987748	SantaRosa	21	3812	Saul	318278	319820
+V	Martin	Canario	3981273	Puyehue	22	0	Telematica	3918273	3019289
