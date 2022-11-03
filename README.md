@@ -47,3 +47,14 @@ Al iniciarse, el programa indicará lo siguiente:
                 10. Salir.
 ```
 Puedes escoger cualquier opción listada escribiendo su número.
+
+#### Crear un vendedor.
+Crea un nuevo vendedor, te pedirá todos los datos correspondientes. Nota que *no puedes ingresar datos que contengan espacios*.
+#### Listar todos los vendedores.
+Listará todos los vendedores actuales, escribirá por pantalla algo del tipo:
+```bash
+1       Marcela Ramirez 312983712       Mariano 20      0       Psico   239812  48102
+2       Roberto Saldia  312987748       SantaRosa       21      3812    Saul    318278  319820
+3       Martin  Canario 3981273 Puyehue 22      0       Telematica      3918273 3019289
+```
+Nota que cada dato está separado por un tab, pero dependiendo del largo de los datos, podrán verse desplazados los datos.
