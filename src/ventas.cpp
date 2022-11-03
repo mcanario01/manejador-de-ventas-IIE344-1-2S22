@@ -2,6 +2,10 @@
 #include <string.h>
 #include "ventas.h"
 
+//###################################################################################
+//################# TDA de Lista (de Vendedores) ####################################
+//###################################################################################
+
 bool vacia(cabeceraVendedor vendedores)
 {
 	return fin(vendedores)==primero(vendedores);
@@ -135,10 +139,9 @@ void copiar(Vendedor &vendedor1, Vendedor vendedor2)
 	vendedor1.clientes = vendedor2.clientes;
 }
 
-//#############################################################################################
-//#############################################################################################
-//#############################################################################################
-//#############################################################################################
+//###################################################################################
+//################# TDA de Lista (de Clientes) ######################################
+//###################################################################################
 
 bool vacia(cabeceraCliente clientes)
 {
@@ -270,4 +273,196 @@ void copiar(Cliente &cliente1, Cliente cliente2)
 	strcpy(cliente1.profesion, cliente2.profesion);
 	cliente1.deuda = cliente2.deuda;
 	strcpy(cliente1.fechaCobro, cliente2.fechaCobro);
+}
+
+//###################################################################################
+//################# Funciones de Manejador de vendedores ############################
+//###################################################################################
+
+void crearVendedor(cabeceraVendedor &vendedores)
+{
+	//petición de datos de nuevo contacto al usuario
+	Vendedor vendedor_aux;
+	printf("\nNombre: ");
+	scanf("%s", vendedor_aux.nombre);
+	printf("\nApellido: ");
+	scanf("%s", vendedor_aux.apellido);
+	printf("\nNúmero telefónico: ");
+	scanf("%ld", &vendedor_aux.telefono);
+	printf("\nDireccion: ");
+	scanf("%s", vendedor_aux.direccion);
+	printf("\nEdad: ");
+	scanf("%d", &vendedor_aux.edad);
+	printf("\nDeuda: ");
+	scanf("%ld", &vendedor_aux.deuda);
+	printf("\nProfesión: ");
+	scanf("%s", vendedor_aux.profesion);
+	printf("\nRUT: ");
+	scanf("%s", vendedor_aux.rut);
+	printf("\nCuenta: ");
+	scanf("%ld", &vendedor_aux.cuenta);
+	inserta(vendedor_aux, fin(vendedores), vendedores);
+}
+
+void crearCliente(cabeceraVendedor &vendedores)
+{
+	Cliente cliente_aux;
+	printf("\nNombre: ");
+	scanf("%s", cliente_aux.nombre);
+	printf("\nApellido: ");
+	scanf("%s", cliente_aux.apellido);
+	printf("\nRUT: ");
+	scanf("%s", cliente_aux.rut);
+	printf("\nTelefono: ");
+	scanf("%ld", &cliente_aux.telefono);
+	printf("\nDireccion: ");
+	scanf("%s", cliente_aux.direccion);
+	printf("\nEdad: ");
+	scanf("%d", &cliente_aux.edad);
+	printf("\nProfesion: ");
+	scanf("%s", cliente_aux.profesion);
+	printf("\nDeuda: ");
+	scanf("%ld", &cliente_aux.deuda);
+	printf("\nFecha de cobro: ");
+	scanf("%s", cliente_aux.fechaCobro);
+
+	printf("\n\nElija el vendedor de este cliente.");
+	printf("\n----------------------------------\n");
+	listarVendedores(vendedores);
+	printf("\nOpcion:");
+	int opcion;
+	scanf("%d", &opcion);
+	Vendedor vendedor_aux;
+	copiar(vendedor_aux, recupera(opcion, vendedores));
+	inserta(cliente_aux, fin(*vendedor_aux.clientes), *vendedor_aux.clientes);
+	suprime(opcion, vendedores);
+	inserta(vendedor_aux, opcion, vendedores);
+}
+
+void listarVendedores(cabeceraVendedor vendedores)
+{
+	//apertura de archivo
+	//bucle que itera hasta el fin de archivo
+	const int numero_vendedores = fin(vendedores);
+	for (int i = primero(vendedores); i < fin(vendedores); i = siguiente(i, vendedores))
+	{
+		//escaneo de datos
+		//muestra de datos por pantalla
+		Vendedor *vendedor_aux = new Vendedor;
+		copiar(*vendedor_aux,recupera(i, vendedores));
+		printf("%d\t%s\t%s\t%ld\t%s\t%d\t%ld\t%s\t%s\t%ld\n",
+		i,
+		vendedor_aux->nombre, 
+		vendedor_aux->apellido, 
+		vendedor_aux->telefono, 
+		vendedor_aux->direccion, 
+		vendedor_aux->edad, 
+		vendedor_aux->deuda, 
+		vendedor_aux->profesion, 
+		vendedor_aux->rut,
+		vendedor_aux->cuenta);
+		delete vendedor_aux;
+	}
+}
+
+void recargarVendedores(FILE* ventas, cabeceraVendedor &vendedores)
+{
+	//suprime todas las entradas de la lista 'vendedores' sin borrar la lista.
+	while(fin(vendedores) != 1)
+	{
+		suprime(fin(vendedores) - 1, vendedores);   
+	}
+
+	while (!feof(ventas))
+	{
+		char v[1];
+		nodoVendedor * aux_vendedor = new nodoVendedor;
+		//escaneo de datos
+		fscanf(ventas, "%s\t%s\t%s\t%ld\t%s\t%d\t%ld\t%s\t%s\t%ld", 
+		v,
+		aux_vendedor->dato.nombre, 
+		aux_vendedor->dato.apellido, 
+		&aux_vendedor->dato.telefono, 
+		aux_vendedor->dato.direccion, 
+		&aux_vendedor->dato.edad, 
+		&aux_vendedor->dato.deuda, 
+		aux_vendedor->dato.profesion, 
+		aux_vendedor->dato.rut,
+		&aux_vendedor->dato.cuenta);
+		if(!strcmp(v,"V"))
+		{
+			inserta(aux_vendedor->dato, fin(vendedores), vendedores);
+		}
+		//cierre de archivo y eliminación de objeto
+		delete aux_vendedor;
+	}
+}
+
+void borrarVendedor(cabeceraVendedor &vendedores)
+{
+	listarVendedores(vendedores);
+	printf("Elija el vendedor que desea borrar: ");
+	int numero;
+	scanf("%d", &numero);
+	suprime(numero, vendedores);
+}
+
+void borrarVendedorPorRut(char rut[], cabeceraVendedor &vendedores)
+{
+	const int numero_vendedores = fin(vendedores);
+	for (int i = primero(vendedores); i < fin(vendedores); i = siguiente(i, vendedores))
+	{
+		//muestra de datos por pantalla
+		Vendedor *vendedor_aux = new Vendedor;
+		copiar(*vendedor_aux,recupera(i, vendedores));
+		if (!strcmp(rut, vendedor_aux->rut))
+		{
+			suprime(i, vendedores);
+		}
+		else
+		{
+			printf("No se encontró un vendedor con ese RUT.");
+		}
+		delete vendedor_aux;
+	}
+}
+
+Vendedor buscarVendedorPorRut(char rut[], cabeceraVendedor vendedores)
+{
+	const int numero_vendedores = fin(vendedores);
+	for (int i = primero(vendedores); i < fin(vendedores); i = siguiente(i, vendedores))
+	{
+		//muestra de datos por pantalla
+		Vendedor vendedor_aux;
+		copiar(vendedor_aux,recupera(i, vendedores));
+		if (!strcmp(rut, vendedor_aux.rut))
+		{
+			return vendedor_aux;
+		}
+	}
+	printf("No se encontró un vendedor con ese RUT.");
+	Vendedor vendedor_nulo;
+	return vendedor_nulo;
+}
+
+void guardarVendedores(FILE * ventas, cabeceraVendedor vendedores)
+{
+	freopen(NULL, "w+", ventas);
+	for (int i = primero(vendedores); i < fin(vendedores); i = siguiente(i, vendedores))
+	{
+		//muestra de datos por pantalla
+		Vendedor vendedor_aux;
+		copiar(vendedor_aux,recupera(i, vendedores));
+		fprintf(ventas, "\nV\t%s\t%s\t%ld\t%s\t%d\t%ld\t%s\t%s\t%ld", 
+		vendedor_aux.nombre, 
+		vendedor_aux.apellido, 
+		vendedor_aux.telefono, 
+		vendedor_aux.direccion, 
+		vendedor_aux.edad, 
+		vendedor_aux.deuda, 
+		vendedor_aux.profesion, 
+		vendedor_aux.rut,
+		vendedor_aux.cuenta);
+	}
+	freopen(NULL, "a+", ventas);
 }
