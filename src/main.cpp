@@ -140,9 +140,9 @@ int main(int argc, char *argv[])
 		printf("\t\t2. Borrar un vendedor.\n");
 		printf("\t\t3. Borrar un vendedor por RUT.\n");
 		printf("\t\t4. Buscar vendedor por RUT.\n");
-		printf("\t\t5. Crear un cliente.\n");
-		printf("\t\t6. Buscar cliente por RUT.\n");
-		printf("\t\t7. Listar todos los vendedores.\n");
+		printf("\t\t5. Listar todos los vendedores.\n");
+		printf("\t\t6. Crear un cliente.\n");
+		printf("\t\t7. Buscar cliente por RUT.\n");
 		printf("\t\t8. Listar clientes por vendedor.\n");
 		printf("\t\t9. Guardar vendedores.\n");
 		printf("\t\t10. Salir.\n");
@@ -180,16 +180,16 @@ int main(int argc, char *argv[])
 			}
 			case 5:
 			{
-				crearCliente(vendedores);
+				listarVendedores(vendedores);
 				break;
 			}
 			case 6:
 			{
+				crearCliente(vendedores);
 				break;
 			}
 			case 7:
 			{
-				listarVendedores(vendedores);
 				break;
 			}
 			case 8:

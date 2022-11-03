@@ -31,25 +31,27 @@ Al iniciarse, el programa indicará lo siguiente:
 ```bash
 ------ Manejador de vendedores -------
 
+	Elija la operación que desea realizar:
 
-
-        Elija la operación que desea realizar:
-
-                1. Crear un vendedor.
-                2. Borrar un vendedor.
-                3. Borrar un vendedor por RUT.
-                4. Buscar vendedor por RUT.
-                5. Crear un cliente.
-                6. Buscar cliente por RUT.
-                7. Listar todos los vendedores.
-                8. Listar clientes por vendedor.
-                9. Guardar vendedores.
-                10. Salir.
+		1. Crear un vendedor.
+		2. Borrar un vendedor.
+		3. Borrar un vendedor por RUT.
+		4. Buscar vendedor por RUT.
+		5. Listar todos los vendedores.
+		6. Crear un cliente.
+		7. Buscar cliente por RUT.
+		8. Listar clientes por vendedor.
+		9. Guardar vendedores.
+		10. Salir.
 ```
 Puedes escoger cualquier opción listada escribiendo su número.
 
 #### Crear un vendedor.
-Crea un nuevo vendedor, te pedirá todos los datos correspondientes. Nota que *no puedes ingresar datos que contengan espacios*.
+Crea un nuevo vendedor, te pedirá todos los datos correspondientes. Nota que **no puedes ingresar datos que contengan espacios**.
+#### Borrar un vendedor.
+Borra un vendedor, ingresa el número del vendedor que quieras borrar. También puedes elegir borrar un vendedor por RUT, en cuyo caso, pedirá un RUT válido. Nota que los RUT se escriben sin puntos ni guión y **tampoco dígito verificador**.
+#### Buscar un vendedor por RUT.
+Encuentra un vendedor dado un RUT que escribas. (La información de como se escriben los RUT están en el punto anterior)
 #### Listar todos los vendedores.
 Listará todos los vendedores actuales, escribirá por pantalla algo del tipo:
 ```bash
@@ -58,3 +60,9 @@ Listará todos los vendedores actuales, escribirá por pantalla algo del tipo:
 3       Martin  Canario 3981273 Puyehue 22      0       Telematica      3918273 3019289
 ```
 Nota que cada dato está separado por un tab, pero dependiendo del largo de los datos, podrán verse desplazados los datos.
+#### Crear un cliente
+Crea un cliente en un vendedor que elijas, te pedirá los datos y finalmente debes ingresar el numero de vendedor.
+#### Buscar un vendedor por RUT.
+Encuentra un cliente dado un RUT que escribas. (La información de como se escriben los RUT están en el punto de arriba)
+#### Listar clientes por vendedor.
+Encuentra todos los clientes de un vendedor dado, debes ingresar el número de vendedor.
