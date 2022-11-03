@@ -59,7 +59,7 @@ Listará todos los vendedores actuales, escribirá por pantalla algo del tipo:
 2       Roberto Saldia  312987748       SantaRosa       21      3812    Saul    318278  319820
 3       Martin  Canario 3981273 Puyehue 22      0       Telematica      3918273 3019289
 ```
-Nota que cada dato está separado por un tab, pero dependiendo del largo de los datos, podrán verse desplazados los datos.
+Nota que cada dato está separado por un tab, pero los datos podrán verse desplazados según el largo de estos.
 #### Crear un cliente
 Crea un cliente en un vendedor que elijas, te pedirá los datos y finalmente debes ingresar el numero de vendedor.
 #### Buscar un vendedor por RUT.

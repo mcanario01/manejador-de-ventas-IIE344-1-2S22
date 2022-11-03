@@ -290,12 +290,6 @@ void crearCliente(cabeceraVendedor &vendedores)
 	printf("\nOpcion:");
 	int opcion;
 	scanf("%d", &opcion);
-	cabeceraVendedor vendedores_aux;
-	vendedores_aux.primero = vendedores.primero;
-	for(int i = 0; i < opcion; i++)
-	{
-		vendedores_aux.primero = vendedores_aux.primero->sgte;
-	}
 	Vendedor vendedor_aux;
 	copiar(vendedor_aux, recupera(opcion, vendedores));
 	inserta(cliente_aux, fin(*vendedor_aux.clientes), *vendedor_aux.clientes);
