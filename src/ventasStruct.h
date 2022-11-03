@@ -19,6 +19,7 @@ struct Vendedor
         telefono = 0;
         edad = 0;
         deuda = 0;
+        clientes = NULL;
     }
 };
 
