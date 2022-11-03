@@ -124,15 +124,6 @@ int main(int argc, char *argv[])
 		}
 	}
 
-/* 
-	FILE * ventas = fopen(argv[1], "a+");
-	cabeceraVendedor vendedores;
-	recargarVendedores(ventas, vendedores);
-	crearVendedor(vendedores);
-	listarVendedores(vendedores);
-	guardarVendedores(ventas, vendedores);
- */
-
 	fclose(ventas);
 	return 0;	
 }

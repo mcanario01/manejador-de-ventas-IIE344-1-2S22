@@ -334,6 +334,12 @@ void crearCliente(cabeceraVendedor &vendedores)
 	scanf("%d", &opcion);
 	Vendedor vendedor_aux;
 	copiar(vendedor_aux, recupera(opcion, vendedores));
+	/*
+		El error de segmentación al crear un cliente probablemente esté aquí, no se como
+		resolverlo, pero sé que tiene que ver con un error en el manejo de memoria.
+		Dado a este error, tampoco pude implementar la parte de cargar los clientes de
+		cada vendedor que están escritos en el archivo .txt.
+	*/
 	inserta(cliente_aux, fin(*vendedor_aux.clientes), *vendedor_aux.clientes);
 	suprime(opcion, vendedores);
 	inserta(vendedor_aux, opcion, vendedores);
