@@ -1,279 +1,8 @@
+#include "ventas.h"
+#include "./TDA-Clientes/clientes.h"
+#include "./TDA-Vendedores/vendedores.h"
 #include <stdio.h>
 #include <string.h>
-#include "ventas.h"
-
-//###################################################################################
-//################# TDA de Lista (de Vendedores) ####################################
-//###################################################################################
-
-bool vacia(cabeceraVendedor vendedores)
-{
-	return fin(vendedores)==primero(vendedores);
-}
-
-int primero(cabeceraVendedor vendedores)
-{
-	return 1;
-}
-
-int anterior(int p, cabeceraVendedor vendedores)
-{
-	return p-1;
-}
-
-int siguiente(int p, cabeceraVendedor vendedores)
-{
-	return p+1;
-}
-
-int fin(cabeceraVendedor vendedores)
-{
-	int c=1;
-	nodoVendedor*aux = vendedores.primero;
-	while(aux!=NULL)
-    {
-		aux = aux->sgte;
-		c++;
-	}
-	return c;
-}
-
-void inserta(Vendedor x, int p, cabeceraVendedor &vendedores)
-{
-	nodoVendedor* nuevo = new nodoVendedor(x);
-	nodoVendedor* aux = vendedores.primero;
-	if(p == primero(vendedores))
-    {
-		nuevo->sgte = vendedores.primero;
-		vendedores.primero = nuevo;
-	}
-    else
-    {
-		for(int i = 0 ; i < p - 2 ; i++)
-        {
-			aux = aux->sgte;
-		}
-		nuevo->sgte = aux->sgte;
-		aux->sgte = nuevo;
-	}
-}
-
-Vendedor recupera(int p, cabeceraVendedor vendedores)
-{
-	nodoVendedor* aux = vendedores.primero;
-	for(int i = 1 ; i < p ; i++)
-    {
-		aux = aux->sgte;
-	}
-	return aux->dato;
-}
-
-int localiza(Vendedor x , cabeceraVendedor vendedores)
-{
-	for(int i = primero(vendedores) ; i < fin(vendedores) ; i = siguiente(i, vendedores))
-    {
-		if(recupera(i, vendedores) == x)
-        {
-			return i;
-		}
-	}
-	return fin(vendedores);
-}
-
-void suprime(int p, cabeceraVendedor &vendedores)
-{
-
-	nodoVendedor* aux = vendedores.primero;
-
-	if(p == primero(vendedores))
-    {
-		vendedores.primero = aux->sgte;
-	}
-    else
-    {
-		nodoVendedor* aux2 = vendedores.primero;
-		for(int i = 0 ; i < p - 2 ; i++)
-        {
-			aux2 = aux2->sgte;
-		}
-		aux = aux2->sgte;
-		aux2->sgte = aux->sgte;
-	}
-	aux->sgte = NULL;
-	delete aux;
-}
-
-void anula(cabeceraVendedor &vendedores)
-{
-	while(!vacia(vendedores))
-    {
-		suprime(primero(vendedores),vendedores);
-    }
-}
-
-bool operator ==(Vendedor vendedor1, Vendedor vendedor2)
-{
-	return 
-	vendedor1.cuenta == vendedor2.cuenta 
-	&& !strcmp(vendedor1.nombre, vendedor2.nombre) 
-	&& !strcmp(vendedor1.apellido, vendedor2.apellido) 
-	&& !strcmp(vendedor1.rut, vendedor2.rut) 
-	&& vendedor1.telefono == vendedor2.telefono 
-	&& !strcmp(vendedor1.direccion, vendedor2.direccion) 
-	&& vendedor1.edad == vendedor2.edad 
-	&& !strcmp(vendedor1.profesion, vendedor2.profesion) 
-	&& vendedor1.deuda == vendedor2.deuda;
-} 
-
-void copiar(Vendedor &vendedor1, Vendedor vendedor2)
-{
-	strcpy(vendedor1.nombre, vendedor2.nombre);
-	strcpy(vendedor1.apellido, vendedor2.apellido);
-	strcpy(vendedor1.direccion, vendedor2.direccion);
-	strcpy(vendedor1.profesion, vendedor2.profesion);
-	strcpy(vendedor1.rut, vendedor2.rut);
-	vendedor1.cuenta = vendedor2.cuenta;
-	vendedor1.telefono = vendedor2.telefono;
-	vendedor1.edad = vendedor2.edad;
-	vendedor1.deuda = vendedor2.deuda;
-	vendedor1.clientes = vendedor2.clientes;
-}
-
-//###################################################################################
-//################# TDA de Lista (de Clientes) ######################################
-//###################################################################################
-
-bool vacia(cabeceraCliente clientes)
-{
-	return fin(clientes)==primero(clientes);
-}
-
-int primero(cabeceraCliente clientes)
-{
-	return 1;
-}
-
-int anterior(int p, cabeceraCliente clientes)
-{
-	return p-1;
-}
-
-int siguiente(int p, cabeceraCliente clientes)
-{
-	return p+1;
-}
-
-int fin(cabeceraCliente clientes)
-{
-	int c=1;
-	nodoCliente*aux = clientes.primero;
-	while(aux!=NULL)
-    {
-		aux = aux->sgte;
-		c++;
-	}
-	return c;
-}
-
-void inserta(Cliente x, int p, cabeceraCliente &clientes)
-{
-	nodoCliente* nuevo = new nodoCliente(x);
-	nodoCliente* aux = clientes.primero;
-	if(p == primero(clientes))
-    {
-		nuevo->sgte = clientes.primero;
-		clientes.primero = nuevo;
-	}
-    else
-    {
-		for(int i = 0 ; i < p - 2 ; i++)
-        {
-			aux = aux->sgte;
-		}
-		nuevo->sgte = aux->sgte;
-		aux->sgte = nuevo;
-	}
-}
-
-Cliente recupera(int p, cabeceraCliente clientes)
-{
-	nodoCliente* aux = clientes.primero;
-	for(int i = 1 ; i < p ; i++)
-    {
-		aux = aux->sgte;
-	}
-	return aux->dato;
-}
-
-int localiza(Cliente x , cabeceraCliente clientes)
-{
-	for(int i = primero(clientes) ; i < fin(clientes) ; i = siguiente(i, clientes))
-    {
-		if(recupera(i, clientes) == x)
-        {
-			return i;
-		}
-	}
-	return fin(clientes);
-}
-
-void suprime(int p, cabeceraCliente &clientes)
-{
-
-	nodoCliente* aux = clientes.primero;
-
-	if(p == primero(clientes))
-    {
-		clientes.primero = aux->sgte;
-	}
-    else
-    {
-		nodoCliente* aux2 = clientes.primero;
-		for(int i = 0 ; i < p - 2 ; i++)
-        {
-			aux2 = aux2->sgte;
-		}
-		aux = aux2->sgte;
-		aux2->sgte = aux->sgte;
-	}
-	aux->sgte = NULL;
-	delete aux;
-}
-
-void anula(cabeceraCliente &clientes)
-{
-	while(!vacia(clientes))
-    {
-		suprime(primero(clientes),clientes);
-    }
-}
-
-bool operator ==(Cliente cliente1, Cliente cliente2)
-{
-	return 
-	!strcmp(cliente1.nombre, cliente2.nombre) 
-	&& !strcmp(cliente1.apellido, cliente2.apellido) 
-	&& !strcmp(cliente1.rut, cliente2.rut) 
-	&& !strcmp(cliente1.rut, cliente2.rut) 
-	&& cliente1.telefono == cliente2.telefono 
-	&& !strcmp(cliente1.direccion, cliente2.direccion) 
-	&& cliente1.edad == cliente2.edad 
-	&& !strcmp(cliente1.profesion, cliente2.profesion) 
-	&& cliente1.deuda == cliente2.deuda;
-} 
-
-void copiar(Cliente &cliente1, Cliente cliente2)
-{
-	strcpy(cliente1.nombre, cliente2.nombre);
-	strcpy(cliente1.apellido, cliente2.apellido);
-	strcpy(cliente1.rut, cliente2.rut);
-	cliente1.telefono = cliente2.telefono;
-	strcpy(cliente1.direccion, cliente2.direccion);
-	cliente1.edad = cliente2.edad;
-	strcpy(cliente1.profesion, cliente2.profesion);
-	cliente1.deuda = cliente2.deuda;
-	strcpy(cliente1.fechaCobro, cliente2.fechaCobro);
-}
 
 //###################################################################################
 //################# Funciones de Manejador de vendedores ############################
@@ -282,7 +11,7 @@ void copiar(Cliente &cliente1, Cliente cliente2)
 void crearVendedor(cabeceraVendedor &vendedores)
 {
 	//petición de datos de nuevo contacto al usuario
-	Vendedor vendedor_aux;
+	Vendedor vendedor_aux; 
 	printf("\nNombre: ");
 	scanf("%s", vendedor_aux.nombre);
 	printf("\nApellido: ");
@@ -334,26 +63,26 @@ void crearCliente(cabeceraVendedor &vendedores)
 	scanf("%d", &opcion);
 	Vendedor vendedor_aux;
 	copiar(vendedor_aux, recupera(opcion, vendedores));
+
 	/*
 		El error de segmentación al crear un cliente probablemente esté aquí, no se como
 		resolverlo, pero sé que tiene que ver con un error en el manejo de memoria.
 		Dado a este error, tampoco pude implementar la parte de cargar los clientes de
 		cada vendedor que están escritos en el archivo .txt.
 	*/
-	inserta(cliente_aux, fin(*vendedor_aux.clientes), *vendedor_aux.clientes);
+
+	inserta(cliente_aux, fin(vendedor_aux.clientes), vendedor_aux.clientes);
 	suprime(opcion, vendedores);
 	inserta(vendedor_aux, opcion, vendedores);
+	//printf("Cliente creado! -> %s %s ", recupera(fin(recupera(opcion,vendedores).clientes),recupera(opcion,vendedores).clientes).nombre, recupera(fin(recupera(opcion,vendedores).clientes),recupera(opcion,vendedores).clientes).apellido);
 }
 
 void listarVendedores(cabeceraVendedor vendedores)
 {
-	//apertura de archivo
-	//bucle que itera hasta el fin de archivo
-	const int numero_vendedores = fin(vendedores);
+	printf("\n\nN°\tNombre\tApelli.\tTel.\tDir.\tEdad\tDeuda\tProf.\tRUT\tCuenta\n");
+	printf("-------------------------------------------------------------------\n");
 	for (int i = primero(vendedores); i < fin(vendedores); i = siguiente(i, vendedores))
 	{
-		//escaneo de datos
-		//muestra de datos por pantalla
 		Vendedor *vendedor_aux = new Vendedor;
 		copiar(*vendedor_aux,recupera(i, vendedores));
 		printf("%d\t%s\t%s\t%ld\t%s\t%d\t%ld\t%s\t%s\t%ld\n",
@@ -371,36 +100,65 @@ void listarVendedores(cabeceraVendedor vendedores)
 	}
 }
 
-void recargarVendedores(FILE* ventas, cabeceraVendedor &vendedores)
+void listarClientes(cabeceraCliente clientes)
+{
+	printf("\n\nN°\tNombre\tApelli.\tTel.\tDir.\tEdad\tDeuda\tProf.\tRUT\t#Cobro\n");
+	printf("-------------------------------------------------------------------\n");
+	for (int i = primero(clientes); i < fin(clientes); i = siguiente(i, clientes))
+	{
+		Cliente *cliente_aux = new Cliente;
+		copiar(*cliente_aux,recupera(i, clientes));
+		printf("%d\t%s\t%s\t%ld\t%s\t%d\t%ld\t%s\t%s\t%s\n",
+		i,
+		cliente_aux->nombre, 
+		cliente_aux->apellido, 
+		cliente_aux->telefono, 
+		cliente_aux->direccion, 
+		cliente_aux->edad, 
+		cliente_aux->deuda, 
+		cliente_aux->profesion, 
+		cliente_aux->rut,
+		cliente_aux->fechaCobro);
+		delete cliente_aux;
+	}
+}
+
+void recargar(FILE* ventas, cabeceraVendedor &vendedores)
 {
 	//suprime todas las entradas de la lista 'vendedores' sin borrar la lista.
 	while(fin(vendedores) != 1)
 	{
 		suprime(fin(vendedores) - 1, vendedores);   
 	}
+	printf("1\n");
 
+	rewind(ventas);
+
+	int i = 0;
 	while (!feof(ventas))
 	{
-		char v[1];
-		nodoVendedor * aux_vendedor = new nodoVendedor;
-		//escaneo de datos
-		fscanf(ventas, "%s\t%s\t%s\t%ld\t%s\t%d\t%ld\t%s\t%s\t%ld", 
-		v,
-		aux_vendedor->dato.nombre, 
-		aux_vendedor->dato.apellido, 
-		&aux_vendedor->dato.telefono, 
-		aux_vendedor->dato.direccion, 
-		&aux_vendedor->dato.edad, 
-		&aux_vendedor->dato.deuda, 
-		aux_vendedor->dato.profesion, 
-		aux_vendedor->dato.rut,
-		&aux_vendedor->dato.cuenta);
-		if(!strcmp(v,"V"))
+		printf("%d\n", i);
+		i++;
+		char indicador[1];
+		fscanf(ventas, "%s", indicador);
+		if(!strcmp(indicador, "V"))
 		{
-			inserta(aux_vendedor->dato, fin(vendedores), vendedores);
+				
+			Vendedor aux_vendedor;
+			//escaneo de datos
+			fscanf(ventas, "%s\t%s\t%ld\t%s\t%d\t%ld\t%s\t%s\t%ld", 
+			aux_vendedor.nombre, 
+			aux_vendedor.apellido, 
+			&aux_vendedor.telefono, 
+			aux_vendedor.direccion, 
+			&aux_vendedor.edad, 
+			&aux_vendedor.deuda, 
+			aux_vendedor.profesion, 
+			aux_vendedor.rut,
+			&aux_vendedor.cuenta);
+			inserta(aux_vendedor, fin(vendedores), vendedores);
+
 		}
-		//cierre de archivo y eliminación de objeto
-		delete aux_vendedor;
 	}
 }
 
@@ -415,7 +173,6 @@ void borrarVendedor(cabeceraVendedor &vendedores)
 
 void borrarVendedorPorRut(char rut[], cabeceraVendedor &vendedores)
 {
-	const int numero_vendedores = fin(vendedores);
 	for (int i = primero(vendedores); i < fin(vendedores); i = siguiente(i, vendedores))
 	{
 		//muestra de datos por pantalla
@@ -451,7 +208,7 @@ Vendedor buscarVendedorPorRut(char rut[], cabeceraVendedor vendedores)
 	return vendedor_nulo;
 }
 
-void guardarVendedores(FILE * ventas, cabeceraVendedor vendedores)
+void guardar(FILE * ventas, cabeceraVendedor vendedores)
 {
 	freopen(NULL, "w+", ventas);
 	for (int i = primero(vendedores); i < fin(vendedores); i = siguiente(i, vendedores))
@@ -469,6 +226,23 @@ void guardarVendedores(FILE * ventas, cabeceraVendedor vendedores)
 		vendedor_aux.profesion, 
 		vendedor_aux.rut,
 		vendedor_aux.cuenta);
+		for (int j = primero(vendedor_aux.clientes); j < fin(vendedor_aux.clientes); j = siguiente(j, vendedor_aux.clientes))
+		{
+			Cliente cliente_aux;
+			copiar(cliente_aux, recupera(j, vendedor_aux.clientes));
+			fprintf(ventas, "\nC\t%s\t%s\t%ld\t%s\t%d\t%ld\t%s\t%s\t%s\t%s\n",
+			cliente_aux.nombre, 
+			cliente_aux.apellido, 
+			cliente_aux.telefono, 
+			cliente_aux.direccion, 
+			cliente_aux.edad, 
+			cliente_aux.deuda, 
+			cliente_aux.profesion, 
+			cliente_aux.rut,
+			cliente_aux.fechaCobro,
+			vendedor_aux.rut);
+
+		}
 	}
 	freopen(NULL, "a+", ventas);
 }

@@ -6,17 +6,17 @@ Para compilar este programa, primero descarga o clona el repositorio con:
 ```bash
 git clone https://github.com/mcanario01/manejador-de-ventas-IIE344-1-2S22
 ```
-Luego, ingresa a la carpeta /src:
+Luego, ingresa a la carpeta /manejador-de-ventas-IIE344-1-2S22/src:
 ```bash
-cd /src
+cd /manejador-de-ventas-IIE344-1-2S22/src
 ```
 Y compila:
 ```bash
 make
 ```
-El archivo makefile ejecutará automáticamente el programa con el archivo .txt por defecto, pero también puedes ejecutarlo cuando quieras con:
+Puede compilar y ejecutar con el .txt por defecto con:
 ```bash
-./manejador-de-vendedores <ruta de archivo .txt>
+make run
 ```
 
 ## Uso.
@@ -55,9 +55,9 @@ Encuentra un vendedor dado un RUT que escribas. (La información de como se escr
 #### Listar todos los vendedores.
 Listará todos los vendedores actuales, escribirá por pantalla algo del tipo:
 ```bash
-1       Marcela Ramirez 312983712       Mariano 20      0       Psico   239812  48102
-2       Roberto Saldia  312987748       SantaRosa       21      3812    Saul    318278  319820
-3       Martin  Canario 3981273 Puyehue 22      0       Telematica      3918273 3019289
+1       Marcela Ramirez 31298371    Mariano      20    0      Psico        239812  481020
+2       Roberto Saldia  31298774    SantaRosa    21    3812   Saul         318278  319820
+3       Martin  Canario 39812735    Puyehue      22    0      Telematica   391827  019289
 ```
 Nota que cada dato está separado por un tab, pero los datos podrán verse desplazados según el largo de estos.
 #### Crear un cliente

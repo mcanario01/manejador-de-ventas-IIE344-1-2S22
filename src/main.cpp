@@ -18,6 +18,8 @@
 #include <stdio.h>
 #include <string.h>
 #include "ventas.h"
+#include "./TDA-Clientes/clientes.h"
+#include "./TDA-Vendedores/vendedores.h"
 
 using namespace std;
 
@@ -32,21 +34,22 @@ int main(int argc, char *argv[])
 	printf("\n\n------ Manejador de vendedores -------\n\n");
 	FILE * ventas = fopen(argv[1], "a+");
 	cabeceraVendedor vendedores;
-	recargarVendedores(ventas, vendedores);
+	printf("1\n");
+	recargar(ventas, vendedores);
 	bool termino = 1;
 	while (termino)
 	{	
-		printf("\n\n\tElija la operación que desea realizar:\n\n");
+		printf("\tElija la operación que desea realizar:\n\n");
 		printf("\t\t1. Crear un vendedor.\n");
 		printf("\t\t2. Borrar un vendedor.\n");
 		printf("\t\t3. Borrar un vendedor por RUT.\n");
 		printf("\t\t4. Buscar vendedor por RUT.\n");
 		printf("\t\t5. Listar todos los vendedores.\n");
-		printf("\t\t6. Crear un cliente.\n");
+		printf("\n\t\t6. Crear un cliente.\n");
 		printf("\t\t7. Buscar cliente por RUT.\n");
 		printf("\t\t8. Listar clientes por vendedor.\n");
-		printf("\t\t9. Guardar vendedores.\n");
-		printf("\t\t10. Salir.\n");
+		printf("\n\t\t9. Guardar.\n");
+		printf("\t\t10. Salir.\n\n");
 		printf("\tOpción:");
 		int opcion;
 		scanf("%d", &opcion);
@@ -95,12 +98,20 @@ int main(int argc, char *argv[])
 			}
 			case 8:
 			{
-				
+				printf("\n\nElija el vendedor de la lista de clientes:");
+				printf("\n----------------------------------\n");
+				listarVendedores(vendedores);
+				printf("\nOpcion:");
+				int opcion_listado_clientes;
+				scanf("%d", &opcion_listado_clientes);
+				Vendedor vendedor_aux;
+				copiar(vendedor_aux, recupera(opcion_listado_clientes, vendedores));
+				listarClientes(vendedor_aux.clientes);
 				break;
 			}
 			case 9:
 			{
-				guardarVendedores(ventas, vendedores);
+				guardar(ventas, vendedores);
 				break;
 			}
 			case 10:
@@ -110,7 +121,7 @@ int main(int argc, char *argv[])
 				scanf("%d", &guardar_cambios);
 				if (guardar_cambios == 1)
 				{
-					guardarVendedores(ventas, vendedores);
+					guardar(ventas, vendedores);
 				}
 				termino = 0;
 				break;
