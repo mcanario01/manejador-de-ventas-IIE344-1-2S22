@@ -134,19 +134,22 @@ void recargar(FILE* ventas, cabeceraVendedor &vendedores)
 
 	rewind(ventas);
 
+
+
 	int i = 0;
 	while (!feof(ventas))
 	{
+		
+		Vendedor aux_vendedor;
+
 		printf("%d\n", i);
 		i++;
 		char indicador[1];
 		fscanf(ventas, "%s", indicador);
 		if(!strcmp(indicador, "V"))
 		{
-				
-			Vendedor aux_vendedor;
 			//escaneo de datos
-			fscanf(ventas, "%s\t%s\t%ld\t%s\t%d\t%ld\t%s\t%s\t%ld", 
+			fscanf(ventas, "%s\t%s\t%ld\t%s\t%d\t%ld\t%s\t%s\t%ld\n", 
 			aux_vendedor.nombre, 
 			aux_vendedor.apellido, 
 			&aux_vendedor.telefono, 
@@ -156,9 +159,38 @@ void recargar(FILE* ventas, cabeceraVendedor &vendedores)
 			aux_vendedor.profesion, 
 			aux_vendedor.rut,
 			&aux_vendedor.cuenta);
-			inserta(aux_vendedor, fin(vendedores), vendedores);
 
+			//impresión por pantalla temporal
+			printf("%s\t%s\t%ld\t%s\t%d\t%ld\t%s\t%s\t%ld", 
+			aux_vendedor.nombre, 
+			aux_vendedor.apellido,
+			aux_vendedor.telefono, 
+			aux_vendedor.direccion, 
+			aux_vendedor.edad, 
+			aux_vendedor.deuda, 
+			aux_vendedor.profesion, 
+			aux_vendedor.rut,
+			aux_vendedor.cuenta);
 		}
+		if(!strcmp(indicador, "C"))
+		{
+			char rut[15];
+			Cliente cliente_aux;
+			fscanf(ventas, "%s\t%s\t%ld\t%s\t%d\t%ld\t%s\t%s\t%s\t%s",
+			cliente_aux.nombre, 
+			cliente_aux.apellido, 
+			&cliente_aux.telefono, 
+			cliente_aux.direccion, 
+			&cliente_aux.edad, 
+			&cliente_aux.deuda, 
+			cliente_aux.profesion, 
+			cliente_aux.rut,
+			cliente_aux.fechaCobro,
+			rut);
+			inserta(cliente_aux, fin(aux_vendedor.clientes), aux_vendedor.clientes);
+		}		
+		
+		inserta(aux_vendedor, fin(vendedores), vendedores);
 	}
 }
 
@@ -192,7 +224,6 @@ void borrarVendedorPorRut(char rut[], cabeceraVendedor &vendedores)
 
 Vendedor buscarVendedorPorRut(char rut[], cabeceraVendedor vendedores)
 {
-	const int numero_vendedores = fin(vendedores);
 	for (int i = primero(vendedores); i < fin(vendedores); i = siguiente(i, vendedores))
 	{
 		//muestra de datos por pantalla
