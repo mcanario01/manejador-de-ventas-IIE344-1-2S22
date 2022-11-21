@@ -32,8 +32,6 @@ int main(int argc, char *argv[])
 		return 1;
 	}
 
-	system("clear");
-
 	printf("\n\n------ Manejador de vendedores -------\n\n");
 	FILE * ventas = fopen(argv[1], "a+");
 	cabeceraVendedor vendedores;
@@ -82,7 +80,21 @@ int main(int argc, char *argv[])
 				printf("\n\nIngrese un RUT: ");
 				char rut[15];
 				scanf("%s", rut);
-				buscarVendedorPorRut(rut, vendedores);
+				int vendedor_pos = buscarVendedorPorRut(rut, vendedores);
+				printf("Check\n");
+				Vendedor vendedor_aux = recupera(vendedor_pos, vendedores);
+				printf("\n\nNombre\tApelli.\tTel.\tDir.\tEdad\tDeuda\tProf.\tRUT\tCuenta\n");
+				printf("-------------------------------------------------------------------\n");
+				printf("%s\t%s\t%ld\t%s\t%d\t%ld\t%s\t%s\t%ld\n",
+				vendedor_aux.nombre, 
+				vendedor_aux.apellido, 
+				vendedor_aux.telefono, 
+				vendedor_aux.direccion, 
+				vendedor_aux.edad, 
+				vendedor_aux.deuda, 
+				vendedor_aux.profesion, 
+				vendedor_aux.rut,
+				vendedor_aux.cuenta);
 				break;
 			}
 			case 5:
@@ -101,7 +113,7 @@ int main(int argc, char *argv[])
 			}
 			case 8:
 			{
-				printf("\n\nElija el vendedor de la lista de clientes:");
+				printf("\n\nElija un vendedor:");
 				printf("\n----------------------------------\n");
 				listarVendedores(vendedores);
 				printf("\nOpcion:");

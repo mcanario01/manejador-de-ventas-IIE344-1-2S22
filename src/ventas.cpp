@@ -65,18 +65,9 @@ void crearCliente(cabeceraVendedor &vendedores)
 	scanf("%d", &opcion);
 	Vendedor vendedor_aux;
 	copiar(vendedor_aux, recupera(opcion, vendedores));
-
-	/*
-		El error de segmentación al crear un cliente probablemente esté aquí, no se como
-		resolverlo, pero sé que tiene que ver con un error en el manejo de memoria.
-		Dado a este error, tampoco pude implementar la parte de cargar los clientes de
-		cada vendedor que están escritos en el archivo .txt.
-	*/
-
 	inserta(cliente_aux, fin(vendedor_aux.clientes), vendedor_aux.clientes);
 	suprime(opcion, vendedores);
 	inserta(vendedor_aux, opcion, vendedores);
-	//printf("Cliente creado! -> %s %s ", recupera(fin(recupera(opcion,vendedores).clientes),recupera(opcion,vendedores).clientes).nombre, recupera(fin(recupera(opcion,vendedores).clientes),recupera(opcion,vendedores).clientes).apellido);
 }
 
 void listarVendedores(cabeceraVendedor vendedores)
@@ -208,18 +199,19 @@ void borrarVendedorPorRut(char rut[], cabeceraVendedor &vendedores)
 
 int buscarVendedorPorRut(char rut[], cabeceraVendedor vendedores)
 {
+	printf("%s\n", rut);
 	for (int i = primero(vendedores); i < fin(vendedores); i = siguiente(i, vendedores))
 	{
 		//muestra de datos por pantalla
-		Vendedor vendedor_aux;
-		vendedor_aux = recupera(i, vendedores);
+		Vendedor vendedor_aux = recupera(i, vendedores);
+		printf("%s\n", vendedor_aux.rut);
 		if (!strcmp(rut, vendedor_aux.rut))
 		{
 			return i;
 		}
 	}
 	printf("No se encontró un vendedor con ese RUT.");
-	return fin(vendedores);
+	return 0;
 }
 
 void guardar(FILE * ventas, cabeceraVendedor vendedores)
@@ -228,8 +220,7 @@ void guardar(FILE * ventas, cabeceraVendedor vendedores)
 	for (int i = primero(vendedores); i < fin(vendedores); i = siguiente(i, vendedores))
 	{
 		//muestra de datos por pantalla
-		Vendedor vendedor_aux;
-		copiar(vendedor_aux,recupera(i, vendedores));
+		Vendedor vendedor_aux = recupera(i, vendedores);
 		fprintf(ventas, "\nV\t%s\t%s\t%ld\t%s\t%d\t%ld\t%s\t%s\t%ld", 
 		vendedor_aux.nombre, 
 		vendedor_aux.apellido, 
@@ -242,9 +233,8 @@ void guardar(FILE * ventas, cabeceraVendedor vendedores)
 		vendedor_aux.cuenta);
 		for (int j = primero(vendedor_aux.clientes); j < fin(vendedor_aux.clientes); j = siguiente(j, vendedor_aux.clientes))
 		{
-			Cliente cliente_aux;
-			copiar(cliente_aux, recupera(j, vendedor_aux.clientes));
-			fprintf(ventas, "\nC\t%s\t%s\t%ld\t%s\t%d\t%ld\t%s\t%s\t%s\t%s\n",
+			Cliente cliente_aux = recupera(j, vendedor_aux.clientes);
+			fprintf(ventas, "\nC\t%s\t%s\t%ld\t%s\t%d\t%ld\t%s\t%s\t%s\t%s",
 			cliente_aux.nombre, 
 			cliente_aux.apellido, 
 			cliente_aux.telefono, 
