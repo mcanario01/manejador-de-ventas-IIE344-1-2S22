@@ -24,8 +24,8 @@ void crearVendedor(cabeceraVendedor &vendedores)
 	scanf("%s", vendedor_aux.direccion);
 	printf("\nEdad: ");
 	scanf("%d", &vendedor_aux.edad);
-	printf("\nDeuda: ");
-	scanf("%ld", &vendedor_aux.deuda);
+	// printf("\nDeuda: ");
+	// scanf("%ld", &vendedor_aux.deuda);
 	printf("\nProfesión: ");
 	scanf("%s", vendedor_aux.profesion);
 	printf("\nRUT: ");
@@ -63,8 +63,8 @@ void crearCliente(cabeceraVendedor &vendedores)
 	printf("\nOpcion:");
 	int opcion;
 	scanf("%d", &opcion);
-	Vendedor vendedor_aux;
-	copiar(vendedor_aux, recupera(opcion, vendedores));
+	Vendedor vendedor_aux = recupera(opcion, vendedores);
+	vendedor_aux.deuda += cliente_aux.deuda;
 	inserta(cliente_aux, fin(vendedor_aux.clientes), vendedor_aux.clientes);
 	suprime(opcion, vendedores);
 	inserta(vendedor_aux, opcion, vendedores);
@@ -131,6 +131,7 @@ void recargar(FILE* ventas, cabeceraVendedor &vendedores)
 		if(!strcmp(indicador, "V"))
 		{
 			//escaneo de datos
+			long deuda_aux;
 			Vendedor *aux_vendedor = new Vendedor;
 			fscanf(ventas, "%s\t%s\t%ld\t%s\t%d\t%ld\t%s\t%s\t%ld", 
 			aux_vendedor->nombre, 
@@ -138,7 +139,7 @@ void recargar(FILE* ventas, cabeceraVendedor &vendedores)
 			&aux_vendedor->telefono, 
 			aux_vendedor->direccion, 
 			&aux_vendedor->edad, 
-			&aux_vendedor->deuda, 
+			&deuda_aux, // DEUDA
 			aux_vendedor->profesion, 
 			aux_vendedor->rut,
 			&aux_vendedor->cuenta);
@@ -155,13 +156,14 @@ void recargar(FILE* ventas, cabeceraVendedor &vendedores)
 			&cliente_aux.telefono, 
 			cliente_aux.direccion, 
 			&cliente_aux.edad, 
-			&cliente_aux.deuda, 
+			&cliente_aux.deuda, // DEUDA
 			cliente_aux.profesion, 
 			cliente_aux.rut,
 			cliente_aux.fechaCobro,
 			rut_vendedor);
-			// int pos_vendedor = buscarVendedorPorRut(rut_vendedor, vendedores);
+
 			Vendedor vendedor_aux = recupera(fin(vendedores)-1, vendedores);
+			vendedor_aux.deuda += cliente_aux.deuda;
 			inserta(cliente_aux, fin(vendedor_aux.clientes), vendedor_aux.clientes);
 			suprime(fin(vendedores)-1, vendedores);
 			inserta(vendedor_aux, fin(vendedores), vendedores);
