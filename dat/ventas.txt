@@ -1,7 +1,11 @@
 
 V	Marcela	Ramirez	29853712	Mariano	20	0	Psico	239812	48102
-V	Roberto	Saldia	20517748	SantaRosa	21	3812	Saul	318278	319820
+C	Francia	Arias	73979490	Mariano	40	1000	Secre	13827398	3/07/22	239812
+
+V	Roberto	Saldia	20517748	SantaRosa	20	3812	Saul	318278	319820
 V	Martin	Canario	21398173	Puyehue	22	0	Telematica	3918273	3019289
+C	Jose	Luis	72947298	Puyehue	55	0	Jefe	8363934	6/12/22	3918273
+
 C	Karen	Dauros	48485758	Puyehue	49	100	Enfermera	90413844	17/5/22	3918273
 
 V	Matthias	Clein	9831208	UFRO	29	0	Profe	98371298	98732198

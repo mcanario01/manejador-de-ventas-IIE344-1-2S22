@@ -88,7 +88,7 @@ void borrarVendedorPorRut(char rut[], cabeceraVendedor &vendedores);
 * Descripción de la función: 
 	Devuelve un vendedor coincidente filtrado por RUT.
 */
-Vendedor buscarVendedorPorRut(char rut[], cabeceraVendedor vendedores);
+int buscarVendedorPorRut(char rut[], cabeceraVendedor vendedores);
 
 /* 
 * Nombre de la función: buscarClientePorRut.

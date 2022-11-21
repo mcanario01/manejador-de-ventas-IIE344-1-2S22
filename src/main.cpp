@@ -17,6 +17,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 #include "ventas.h"
 #include "./TDA-Clientes/clientes.h"
 #include "./TDA-Vendedores/vendedores.h"
@@ -30,7 +31,9 @@ int main(int argc, char *argv[])
 		printf("Muchos argumentos!");
 		return 1;
 	}
-		
+
+	system("clear");
+
 	printf("\n\n------ Manejador de vendedores -------\n\n");
 	FILE * ventas = fopen(argv[1], "a+");
 	cabeceraVendedor vendedores;
