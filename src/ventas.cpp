@@ -72,8 +72,8 @@ void crearCliente(cabeceraVendedor &vendedores)
 
 void listarVendedores(cabeceraVendedor vendedores)
 {
-	printf("\n\nN°\tNombre\tApelli.\tTel.\tDir.\tEdad\tDeuda\tProf.\tRUT\tCuenta\n");
-	printf("-------------------------------------------------------------------\n");
+	printf("\n\nN°\tNombre\tApelli.\tTelefono\tDir.\tEdad\tDeuda\tProfes.\tRUT\t\tCuenta\n");
+	printf("----------------------------------------------------------------------------------------------\n");
 	for (int i = primero(vendedores); i < fin(vendedores); i = siguiente(i, vendedores))
 	{
 		Vendedor vendedor_aux;
@@ -95,8 +95,8 @@ void listarVendedores(cabeceraVendedor vendedores)
 
 void listarClientes(cabeceraCliente clientes)
 {
-	printf("\n\nN°\tNombre\tApelli.\tTel.\tDir.\tEdad\tDeuda\tProf.\tRUT\t#Cobro\n");
-	printf("-------------------------------------------------------------------\n");
+	printf("\n\nN°\tNombre\tApelli.\tTelefono\tDir.\tEdad\tDeuda\tProfes.\tRUT\t\t#Cobro\n");
+	printf("----------------------------------------------------------------------------------------------\n");
 	for (int i = primero(clientes); i < fin(clientes); i = siguiente(i, clientes))
 	{
 		Cliente *cliente_aux = new Cliente;
@@ -172,7 +172,7 @@ void recargar(FILE* ventas, cabeceraVendedor &vendedores)
 void borrarVendedor(cabeceraVendedor &vendedores)
 {
 	listarVendedores(vendedores);
-	printf("Elija el vendedor que desea borrar: ");
+	printf("\nOpcion: ");
 	int numero;
 	scanf("%d", &numero);
 	suprime(numero, vendedores);
