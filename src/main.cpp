@@ -59,16 +59,19 @@ int main(int argc, char *argv[])
 		{
 			case 1:
 			{
+				// Crear vendedor
 				crearVendedor(vendedores);
 				break;
 			}
 			case 2:
 			{
+				// Borrar vendedor
 				borrarVendedor(vendedores);
 				break;
 			}
 			case 3:
 			{
+				// Borrar vendedor por RUT
 				printf("\n\nIngrese un RUT: ");
 				char rut[15];
 				scanf("%s", rut);
@@ -77,42 +80,87 @@ int main(int argc, char *argv[])
 			}
 			case 4:
 			{
+				// Buscar vendedor por RUT
 				printf("\n\nIngrese un RUT: ");
 				char rut[15];
 				scanf("%s", rut);
 				int vendedor_pos = buscarVendedorPorRut(rut, vendedores);
-				printf("Check\n");
-				Vendedor vendedor_aux = recupera(vendedor_pos, vendedores);
-				printf("\n\nNombre\tApelli.\tTel.\tDir.\tEdad\tDeuda\tProf.\tRUT\tCuenta\n");
-				printf("-------------------------------------------------------------------\n");
-				printf("%s\t%s\t%ld\t%s\t%d\t%ld\t%s\t%s\t%ld\n",
-				vendedor_aux.nombre, 
-				vendedor_aux.apellido, 
-				vendedor_aux.telefono, 
-				vendedor_aux.direccion, 
-				vendedor_aux.edad, 
-				vendedor_aux.deuda, 
-				vendedor_aux.profesion, 
-				vendedor_aux.rut,
-				vendedor_aux.cuenta);
+				if(vendedor_pos != 0)
+				{
+					Vendedor vendedor_aux = recupera(vendedor_pos, vendedores);
+					printf("\n\nNombre\tApelli.\tTel.\tDir.\tEdad\tDeuda\tProf.\tRUT\tCuenta\n");
+					printf("-------------------------------------------------------------------\n");
+					printf("%s\t%s\t%ld\t%s\t%d\t%ld\t%s\t%s\t%ld\n",
+					vendedor_aux.nombre, 
+					vendedor_aux.apellido, 
+					vendedor_aux.telefono, 
+					vendedor_aux.direccion, 
+					vendedor_aux.edad, 
+					vendedor_aux.deuda, 
+					vendedor_aux.profesion, 
+					vendedor_aux.rut,
+					vendedor_aux.cuenta);
+				}
+				else
+				{
+					printf("\nNo se encontró un vendedor con ese RUT!\n");
+				}
 				break;
 			}
 			case 5:
 			{
+				// Listar todos los vendedores
 				listarVendedores(vendedores);
 				break;
 			}
 			case 6:
 			{
+				// Crear un cliente en un vendedor en particular
 				crearCliente(vendedores);
 				break;
 			}
 			case 7:
 			{
+				// Buscar cliente por RUT
+				
+				printf("\n\nElija un vendedor:");
+				printf("\n----------------------------------\n");
+				listarVendedores(vendedores);
+				printf("\nOpcion:");
+				int opcion_listado_clientes;
+				scanf("%d", &opcion_listado_clientes);
+				Vendedor vendedor_aux = recupera(opcion_listado_clientes, vendedores);
+
+
+				printf("\n\nIngrese un RUT: ");
+				char rut[15];
+				scanf("%s", rut);
+				int cliente_pos = buscarClientePorRut(rut, vendedor_aux.clientes);
+				if(cliente_pos != 0)
+				{
+					Cliente cliente_aux = recupera(cliente_pos, vendedor_aux.clientes);
+					printf("\n\nNombre\tApelli.\tTel.\tDir.\tEdad\tDeuda\tProf.\tRUT\t#Cobro\n");
+					printf("-------------------------------------------------------------------\n");
+					printf("%s\t%s\t%ld\t%s\t%d\t%ld\t%s\t%s\t%s\n",
+					cliente_aux.nombre, 
+					cliente_aux.apellido, 
+					cliente_aux.telefono, 
+					cliente_aux.direccion, 
+					cliente_aux.edad, 
+					cliente_aux.deuda, 
+					cliente_aux.profesion, 
+					cliente_aux.rut,
+					cliente_aux.fechaCobro);
+				}
+				else
+				{
+					printf("\nNo se encontró un cliente de %s %s con ese RUT!\n", vendedor_aux.nombre, vendedor_aux.apellido);
+				}
 				break;
 			}
 			case 8:
 			{
+				// Listar todos los vendedores de un cliente
 				printf("\n\nElija un vendedor:");
 				printf("\n----------------------------------\n");
 				listarVendedores(vendedores);
@@ -126,11 +174,13 @@ int main(int argc, char *argv[])
 			}
 			case 9:
 			{
+				// Guardar lista de vendedores
 				guardar(ventas, vendedores);
 				break;
 			}
 			case 10:
 			{
+				// Salir (pregunta si guardar o no)
 				printf("\n¿Desea guardar los cambios? (1. Si / 2. No): ");
 				int guardar_cambios;
 				scanf("%d", &guardar_cambios);
@@ -144,6 +194,7 @@ int main(int argc, char *argv[])
 			
 			default:
 			{
+				// Opción no valida
 				printf("Opción inválida.");
 				break;
 			}

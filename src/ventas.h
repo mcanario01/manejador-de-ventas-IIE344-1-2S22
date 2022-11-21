@@ -99,7 +99,7 @@ int buscarVendedorPorRut(char rut[], cabeceraVendedor vendedores);
 * Descripción de la función: 
 	Devuelve un Cliente coincidente filtrado por RUT.
 */
-Cliente buscarClientePorRut(char rut[], cabeceraCliente clientes);
+int buscarClientePorRut(char rut[], cabeceraCliente clientes);
 
 /* 
 * Nombre de la función: listarClientesPorVendedor.

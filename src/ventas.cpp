@@ -188,29 +188,38 @@ void borrarVendedorPorRut(char rut[], cabeceraVendedor &vendedores)
 		if (!strcmp(rut, vendedor_aux->rut))
 		{
 			suprime(i, vendedores);
-		}
-		else
-		{
-			printf("No se encontró un vendedor con ese RUT.");
+			return;
 		}
 		delete vendedor_aux;
+		printf("No se encontró un vendedor con ese RUT.");
+		return;
 	}
 }
 
 int buscarVendedorPorRut(char rut[], cabeceraVendedor vendedores)
 {
-	printf("%s\n", rut);
 	for (int i = primero(vendedores); i < fin(vendedores); i = siguiente(i, vendedores))
 	{
-		//muestra de datos por pantalla
 		Vendedor vendedor_aux = recupera(i, vendedores);
-		printf("%s\n", vendedor_aux.rut);
 		if (!strcmp(rut, vendedor_aux.rut))
 		{
 			return i;
 		}
 	}
-	printf("No se encontró un vendedor con ese RUT.");
+	return 0;
+}
+
+
+int buscarClientePorRut(char rut[], cabeceraCliente clientes)
+{
+	for (int i = primero(clientes); i < fin(clientes); i = siguiente(i, clientes))
+	{
+		Cliente cliente_aux = recupera(i, clientes);
+		if (!strcmp(rut, cliente_aux.rut))
+		{
+			return i;
+		}
+	}
 	return 0;
 }
 
