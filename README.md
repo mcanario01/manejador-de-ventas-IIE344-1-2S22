@@ -24,7 +24,7 @@ El funcionamiento del programa es bastante sencillo, para ejecutarlo usa:
 ```bash
 ./manejador-de-vendedores <ruta de archivo .txt>
 ```
-Siendo la ruta del archivo .txt una ruta cualquiera a un archivo de dicha extensión.
+Siendo la ruta del archivo .txt una ruta cualquiera a un archivo de dicha extensión (No inluye los corchetes).
 
 ### Funcionamiento.
 Al iniciarse, el programa indicará lo siguiente:
@@ -38,10 +38,12 @@ Al iniciarse, el programa indicará lo siguiente:
 		3. Borrar un vendedor por RUT.
 		4. Buscar vendedor por RUT.
 		5. Listar todos los vendedores.
+
 		6. Crear un cliente.
 		7. Buscar cliente por RUT.
 		8. Listar clientes por vendedor.
-		9. Guardar vendedores.
+
+		9. Guardar.
 		10. Salir.
 ```
 Puedes escoger cualquier opción listada escribiendo su número.
@@ -49,15 +51,19 @@ Puedes escoger cualquier opción listada escribiendo su número.
 #### Crear un vendedor.
 Crea un nuevo vendedor, te pedirá todos los datos correspondientes. Nota que **no puedes ingresar datos que contengan espacios**.
 #### Borrar un vendedor.
-Borra un vendedor, ingresa el número del vendedor que quieras borrar. También puedes elegir borrar un vendedor por RUT, en cuyo caso, pedirá un RUT válido. Nota que los RUT se escriben sin puntos ni guión y **tampoco dígito verificador**.
+Borra un vendedor, ingresa el número del vendedor que quieras borrar. También puedes elegir borrar un vendedor por RUT, en cuyo caso, pedirá un RUT válido. Nota que los RUT se escriben sin puntos ni guión y **tampoco dígito verificador**. *Ej: 11222333*.
 #### Buscar un vendedor por RUT.
 Encuentra un vendedor dado un RUT que escribas. (La información de como se escriben los RUT están en el punto anterior)
+#### Borrar un vendedor por RUT.
+Elimina un vendedor dado un RUT que escribas.
 #### Listar todos los vendedores.
 Listará todos los vendedores actuales, escribirá por pantalla algo del tipo:
 ```bash
-1       Marcela Ramirez 31298371    Mariano      20    0      Psico        239812  481020
-2       Roberto Saldia  31298774    SantaRosa    21    3812   Saul         318278  319820
-3       Martin  Canario 39812735    Puyehue      22    0      Telematica   391827  019289
+N°	Nombre	Apelli.	Telefono	Direcc. Edad	Deuda	Profes.	RUT			Cuenta
+----------------------------------------------------------------------------------
+1	Marcela	Ramirez	31298371	Mariano	20		0		Psico	23981266	481020
+2	Roberto	Saldia	31298774	SantaRo	21		3812	Saul	31827855	319820
+3	Martin	Canario	39812735	Puyehue	22		0		Telemat	39182755	019289
 ```
 Nota que cada dato está separado por un tab, pero los datos podrán verse desplazados según el largo de estos.
 #### Crear un cliente
