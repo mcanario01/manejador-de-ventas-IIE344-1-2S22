@@ -40,11 +40,12 @@ Al iniciarse, el programa indicará lo siguiente:
 		5. Listar todos los vendedores.
 
 		6. Crear un cliente.
-		7. Buscar cliente por RUT.
-		8. Listar clientes por vendedor.
+		7. Borrar un cliente.
+		8. Buscar cliente por RUT.
+		9. Listar clientes por vendedor.
 
-		9. Guardar.
-		10. Salir.
+		10. Guardar.
+		11. Salir.
 ```
 Puedes escoger cualquier opción listada escribiendo su número.
 ***
@@ -74,10 +75,13 @@ Nota que cada dato está separado por un tab, pero los datos podrán verse despl
 #### 6) Crear un cliente
 Crea un cliente en un vendedor que elijas, te pedirá los datos y finalmente debes ingresar el numero de vendedor. [Ver recomendaciones.](https://github.com/mcanario01/manejador-de-ventas-IIE344-1-2S22#recomendaciones)
 ***
-#### 7) Buscar un cliente por RUT.
+#### 7) Borrar un cliente.
+Borra un cliente, ingresa el número del cliente que quieras borrar, luego de elegir un vendedor. 
+***
+#### 8) Buscar un cliente por RUT.
 Encuentra un cliente dado un RUT que escribas. [Ver recomendaciones.](https://github.com/mcanario01/manejador-de-ventas-IIE344-1-2S22#recomendaciones)
 ***
-#### 8) Listar clientes por vendedor.
+#### 9) Listar clientes por vendedor.
 Encuentra todos los clientes de un vendedor dado, debes ingresar el número de vendedor.
 ***
 ## Recomendaciones: 
