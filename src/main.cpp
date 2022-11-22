@@ -155,42 +155,38 @@ int main(int argc, char *argv[])
 			{
 				// Buscar cliente por RUT
 				system("clear");
-				printf("\n\nElija un vendedor:");
-				printf("\n----------------------------------\n");
-				listarVendedores(vendedores);
-				printf("\nOpcion:");
-				int opcion_listado_clientes;
-				scanf("%d", &opcion_listado_clientes);
-				Vendedor vendedor_aux = recupera(opcion_listado_clientes, vendedores);
-
-
 				printf("\n\nIngrese un RUT: ");
 				char rut[15];
 				scanf("%s", rut);
-				int cliente_pos = buscarClientePorRut(rut, vendedor_aux.clientes);
-				if(cliente_pos != 0)
+
+				int contador = 0;
+
+				cabeceraCliente clientes_aux;
+
+				for (int i = primero(vendedores); i < fin(vendedores); i = siguiente(i, vendedores))
 				{
-					Cliente cliente_aux = recupera(cliente_pos, vendedor_aux.clientes);
-					printf("\n\nNombre\tApelli.\tTel.\tDir.\tEdad\tDeuda\tProf.\tRUT\t#Cobro\n");
-					printf("-------------------------------------------------------------------\n");
-					printf("%s\t%s\t%ld\t%s\t%d\t%ld\t%s\t%s\t%s\n",
-					cliente_aux.nombre, 
-					cliente_aux.apellido, 
-					cliente_aux.telefono, 
-					cliente_aux.direccion, 
-					cliente_aux.edad, 
-					cliente_aux.deuda, 
-					cliente_aux.profesion, 
-					cliente_aux.rut,
-					cliente_aux.fechaCobro);
+					Vendedor vendedor_aux = recupera(i, vendedores);
+					int cliente_pos = buscarClientePorRut(rut, vendedor_aux.clientes);
+				
+					if (cliente_pos != 0)
+					{
+						Cliente cliente_aux = recupera(cliente_pos, vendedor_aux.clientes);
+						inserta(cliente_aux, fin(clientes_aux), clientes_aux);
+						contador++;
+					}
+				}
+				if(contador == 0)
+				{
+					printf("\nNo se encontró un cliente con este RUT!\n");
 				}
 				else
 				{
-					printf("\nNo se encontró un cliente de %s %s con ese RUT!\n", vendedor_aux.nombre, vendedor_aux.apellido);
+					listarClientes(clientes_aux);
 				}
 				printf("\n");
 				break;
 			}
+
 			case 9:
 			{
 				// Listar todos los vendedores de un cliente
@@ -233,6 +229,7 @@ int main(int argc, char *argv[])
 			default:
 			{
 				// Opción no valida
+				system("clear");
 				printf("Opción inválida.");
 				printf("\n");
 				break;

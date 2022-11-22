@@ -54,7 +54,8 @@ void listarClientes(cabeceraCliente clientes);
 * Dato de retorno: N/A
 * Descripción de la función: 
 	La función recargar carga en una lista (cabeceraVendedor) todos los
-	vendedores de un archivo en particular.
+	vendedores y los clientes de cada vendedor de un archivo en particular según
+	un formato estipulado.
 */
 void recargar(FILE* ventas, cabeceraVendedor &vendedores);
 
@@ -75,7 +76,8 @@ void borrar(cabeceraVendedor &vendedores);
 				"vendedor" de tipo Vendedor.
 * Dato de retorno: N/A
 * Descripción de la función: 
-	Borra un cliente en particular de una lista de clientes.
+	Borra un cliente en particular de una lista de clientes de un vendedor
+	en particular.
 */
 void borrar(Vendedor &vendedor, cabeceraCliente &clientes);
 
@@ -108,7 +110,8 @@ int buscarVendedorPorRut(char rut[], cabeceraVendedor vendedores);
 				"Clientes" de tipo cabeceraCliente.
 * Dato de retorno: "Cliente" de tipo Cliente.
 * Descripción de la función: 
-	Devuelve un Cliente coincidente filtrado por RUT.
+	Devuelve un Cliente coincidente filtrado por RUT en la lista de clientes de
+	un vendedor en particular.
 */
 int buscarClientePorRut(char rut[], cabeceraCliente clientes);
 

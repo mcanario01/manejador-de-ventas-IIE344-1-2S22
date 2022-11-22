@@ -79,7 +79,7 @@ Crea un cliente en un vendedor que elijas, te pedirá los datos y finalmente deb
 Borra un cliente, ingresa el número del cliente que quieras borrar, luego de elegir un vendedor. 
 ***
 #### 8) Buscar un cliente por RUT.
-Encuentra un cliente dado un RUT que escribas. [Ver recomendaciones.](https://github.com/mcanario01/manejador-de-ventas-IIE344-1-2S22#recomendaciones)
+Encuentra un cliente dado un RUT que escribas en una lista de clientes de un vendedor en particular. [Ver recomendaciones.](https://github.com/mcanario01/manejador-de-ventas-IIE344-1-2S22#recomendaciones)
 ***
 #### 9) Listar clientes por vendedor.
 Encuentra todos los clientes de un vendedor dado, debes ingresar el número de vendedor.
