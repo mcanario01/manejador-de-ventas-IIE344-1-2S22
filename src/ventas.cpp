@@ -171,13 +171,24 @@ void recargar(FILE* ventas, cabeceraVendedor &vendedores)
 	}
 }
 
-void borrarVendedor(cabeceraVendedor &vendedores)
+void borrar(cabeceraVendedor &vendedores)
 {
 	listarVendedores(vendedores);
 	printf("\nOpcion: ");
 	int numero;
 	scanf("%d", &numero);
 	suprime(numero, vendedores);
+}
+
+void borrar(Vendedor &vendedor, cabeceraCliente &clientes)
+{
+	listarClientes(clientes);
+	printf("\nOpcion: ");
+	int numero;
+	scanf("%d", &numero);
+	Cliente cliente_aux = recupera(numero, clientes);
+	vendedor.deuda -= cliente_aux.deuda;
+	suprime(numero, clientes);
 }
 
 void borrarVendedorPorRut(char rut[], cabeceraVendedor &vendedores)

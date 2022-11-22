@@ -59,14 +59,25 @@ void listarClientes(cabeceraCliente clientes);
 void recargar(FILE* ventas, cabeceraVendedor &vendedores);
 
 /* 
-* Nombre de la función: borrarVendedor.
+* Nombre de la función: borrar.
 * Tipo de función: void.
 * Parámetros: "vendedores" de tipo cabeceraVendedor.
 * Dato de retorno: N/A
 * Descripción de la función: 
 	Borra un vendedor en particular de una lista de vendedores.
 */
-void borrarVendedor(cabeceraVendedor &vendedores);
+void borrar(cabeceraVendedor &vendedores);
+
+/* 
+* Nombre de la función: borrar.
+* Tipo de función: void.
+* Parámetros: 	"clientes" de tipo cabeceraCliente.
+				"vendedor" de tipo Vendedor.
+* Dato de retorno: N/A
+* Descripción de la función: 
+	Borra un cliente en particular de una lista de clientes.
+*/
+void borrar(Vendedor &vendedor, cabeceraCliente &clientes);
 
 /* 
 * Nombre de la función: borrarVendedorPorRut.

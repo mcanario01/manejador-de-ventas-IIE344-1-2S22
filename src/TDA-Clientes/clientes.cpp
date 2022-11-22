@@ -82,7 +82,6 @@ int localiza(Cliente x , cabeceraCliente clientes)
 
 void suprime(int p, cabeceraCliente &clientes)
 {
-
 	nodoCliente* aux = clientes.primero;
 
 	if(p == primero(clientes))

@@ -14,7 +14,7 @@ Y compila:
 ```bash
 make
 ```
-Puede compilar y ejecutar con el .txt por defecto con:
+Puedes compilar y ejecutar con el .txt por defecto con:
 ```bash
 make run
 ```
@@ -24,7 +24,7 @@ El funcionamiento del programa es bastante sencillo, para ejecutarlo usa:
 ```bash
 ./manejador-de-vendedores <ruta de archivo .txt>
 ```
-Siendo la ruta del archivo .txt una ruta cualquiera a un archivo de dicha extensión (No inluye los corchetes).
+Siendo la `<ruta del archivo .txt>` una ruta cualquiera a un archivo de dicha extensión (No inluye los corchetes).
 
 ### Funcionamiento.
 Al iniciarse, el programa indicará lo siguiente:
@@ -47,7 +47,7 @@ Al iniciarse, el programa indicará lo siguiente:
 		10. Salir.
 ```
 Puedes escoger cualquier opción listada escribiendo su número.
-
+***
 #### 1) Crear un vendedor.
 Crea un nuevo vendedor, te pedirá todos los datos correspondientes. [Ver recomendaciones.](https://github.com/mcanario01/manejador-de-ventas-IIE344-1-2S22#recomendaciones)
 ***

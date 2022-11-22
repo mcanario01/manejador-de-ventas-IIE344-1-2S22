@@ -46,10 +46,11 @@ int main(int argc, char *argv[])
 		printf("\t\t4. Buscar vendedor por RUT.\n");
 		printf("\t\t5. Listar todos los vendedores.\n");
 		printf("\n\t\t6. Crear un cliente.\n");
-		printf("\t\t7. Buscar cliente por RUT.\n");
-		printf("\t\t8. Listar clientes por vendedor.\n");
-		printf("\n\t\t9. Guardar.\n");
-		printf("\t\t10. Salir.\n\n");
+		printf("\t\t7. Borrar un cliente.\n");
+		printf("\t\t8. Buscar cliente por RUT.\n");
+		printf("\t\t9. Listar clientes por vendedor.\n");
+		printf("\n\t\t10. Guardar.\n");
+		printf("\t\t11. Salir.\n\n");
 		printf("\tOpción:");
 		int opcion;
 		scanf("%d", &opcion);
@@ -68,7 +69,7 @@ int main(int argc, char *argv[])
 			{
 				// Borrar vendedor
 				system("clear");
-				borrarVendedor(vendedores);
+				borrar(vendedores);
 				printf("\n");
 				break;
 			}
@@ -124,13 +125,30 @@ int main(int argc, char *argv[])
 			}
 			case 6:
 			{
-				// Crear un cliente en un vendedor en particular
+				// Crear un cliente en un vendedor en particular.
 				system("clear");
 				crearCliente(vendedores);
 				printf("\n");
 				break;
 			}
 			case 7:
+			{
+				// Borrar un cliente de un vendedor en particular.
+				system("clear");				
+				printf("\n\nElija un vendedor:");
+				printf("\n----------------------------------\n");
+				listarVendedores(vendedores);
+				printf("\nOpcion:");
+				int opcion_listado_clientes;
+				scanf("%d", &opcion_listado_clientes);
+				Vendedor vendedor_aux = recupera(opcion_listado_clientes, vendedores);
+				
+				borrar(vendedor_aux, vendedor_aux.clientes);
+				printf("\n");
+				break;
+			}
+
+			case 8:
 			{
 				// Buscar cliente por RUT
 				system("clear");
@@ -170,7 +188,7 @@ int main(int argc, char *argv[])
 				printf("\n");
 				break;
 			}
-			case 8:
+			case 9:
 			{
 				// Listar todos los vendedores de un cliente
 				system("clear");
@@ -186,14 +204,15 @@ int main(int argc, char *argv[])
 				printf("\n");
 				break;
 			}
-			case 9:
+			case 10:
 			{
 				// Guardar lista de vendedores
 				system("clear");
+				printf("\nGuardado exitoso!\n\n");
 				guardar(ventas, vendedores);
 				break;
 			}
-			case 10:
+			case 11:
 			{
 				// Salir (pregunta si guardar o no)
 				printf("\n¿Desea guardar los cambios? (1. Si / 2. No): ");
