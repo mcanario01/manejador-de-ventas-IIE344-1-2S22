@@ -33,7 +33,7 @@ Al iniciarse, el programa indicará lo siguiente:
 
 	Elija la operación que desea realizar:
 
-		1. [Crear un vendedor](https://github.com/mcanario01/manejador-de-ventas-IIE344-1-2S22#crear-un-vendedor).
+		1. Crear un vendedor.
 		2. Borrar un vendedor.
 		3. Borrar un vendedor por RUT.
 		4. Buscar vendedor por RUT.
@@ -49,17 +49,17 @@ Al iniciarse, el programa indicará lo siguiente:
 Puedes escoger cualquier opción listada escribiendo su número.
 
 #### Crear un vendedor.
-Crea un nuevo vendedor, te pedirá todos los datos correspondientes.
----
+Crea un nuevo vendedor, te pedirá todos los datos correspondientes. [Ver recomendaciones.](https://github.com/mcanario01/manejador-de-ventas-IIE344-1-2S22#recomendaciones)
+***
 #### Borrar un vendedor.
 Borra un vendedor, ingresa el número del vendedor que quieras borrar. 
----
+***
 #### Buscar un vendedor por RUT.
-Encuentra un vendedor dado un RUT que escribas. (La información de como se escriben los RUT están en el punto anterior)
----
+Encuentra un vendedor dado un RUT que escribas. [Ver recomendaciones.](https://github.com/mcanario01/manejador-de-ventas-IIE344-1-2S22#recomendaciones)
+***
 #### Borrar un vendedor por RUT.
-Elimina un vendedor dado un RUT que escribas.
----
+Elimina un vendedor dado un RUT que escribas. [Ver recomendaciones.](https://github.com/mcanario01/manejador-de-ventas-IIE344-1-2S22#recomendaciones)
+***
 #### Listar todos los vendedores.
 Listará todos los vendedores actuales, escribirá por pantalla algo del tipo:
 ```bash
@@ -70,16 +70,16 @@ N°	Nombre	Apelli.	Telefono	Direcc. Edad	Deuda	Profes.	RUT		Cuenta
 3	Martin	Canario	39812735	Puyehue	22	0	Telemat	39182755	019289
 ```
 Nota que cada dato está separado por un tab, pero los datos podrán verse desplazados según el largo de estos (Ver recomendaciones para evitar descuadres).
----
+***
 #### Crear un cliente
-Crea un cliente en un vendedor que elijas, te pedirá los datos (Las recomendaciones de cómo ingresar los datos están arriba) y finalmente debes ingresar el numero de vendedor.
----
+Crea un cliente en un vendedor que elijas, te pedirá los datos y finalmente debes ingresar el numero de vendedor. [Ver recomendaciones.](https://github.com/mcanario01/manejador-de-ventas-IIE344-1-2S22#recomendaciones)
+***
 #### Buscar un cliente por RUT.
-Encuentra un cliente dado un RUT que escribas. (La información de como se escriben los RUT está arriba)
----
+Encuentra un cliente dado un RUT que escribas. [Ver recomendaciones.](https://github.com/mcanario01/manejador-de-ventas-IIE344-1-2S22#recomendaciones)
+***
 #### Listar clientes por vendedor.
 Encuentra todos los clientes de un vendedor dado, debes ingresar el número de vendedor.
----
+***
 ## Recomendaciones: 
 * Los RUT se escriben sin puntos guión **ni dígito verificador**. *Ej: 11222333*.
 * **No puedes ingresar datos que contengan espacios.**
