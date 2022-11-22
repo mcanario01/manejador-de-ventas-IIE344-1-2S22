@@ -61,9 +61,9 @@ Listará todos los vendedores actuales, escribirá por pantalla algo del tipo:
 ```bash
 N°	Nombre	Apelli.	Telefono	Direcc. Edad	Deuda	Profes.	RUT			Cuenta
 ----------------------------------------------------------------------------------
-1	Marcela	Ramirez	31298371	Mariano	20		0		Psico	23981266	481020
-2	Roberto	Saldia	31298774	SantaRo	21		3812	Saul	31827855	319820
-3	Martin	Canario	39812735	Puyehue	22		0		Telemat	39182755	019289
+1	Marcela	Ramirez	31298371	Mariano	20	0	Psico	23981266	481020
+2	Roberto	Saldia	31298774	SantaRo	21	3812Saul	31827855	319820
+3	Martin	Canario	39812735	Puyehue	22	0	Telemat	39182755	019289
 ```
 Nota que cada dato está separado por un tab, pero los datos podrán verse desplazados según el largo de estos.
 #### Crear un cliente
