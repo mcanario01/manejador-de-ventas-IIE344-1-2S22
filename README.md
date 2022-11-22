@@ -48,19 +48,19 @@ Al iniciarse, el programa indicará lo siguiente:
 ```
 Puedes escoger cualquier opción listada escribiendo su número.
 
-#### Crear un vendedor.
+#### 1) Crear un vendedor.
 Crea un nuevo vendedor, te pedirá todos los datos correspondientes. [Ver recomendaciones.](https://github.com/mcanario01/manejador-de-ventas-IIE344-1-2S22#recomendaciones)
 ***
-#### Borrar un vendedor.
+#### 2) Borrar un vendedor.
 Borra un vendedor, ingresa el número del vendedor que quieras borrar. 
 ***
-#### Buscar un vendedor por RUT.
+#### 3) Buscar un vendedor por RUT.
 Encuentra un vendedor dado un RUT que escribas. [Ver recomendaciones.](https://github.com/mcanario01/manejador-de-ventas-IIE344-1-2S22#recomendaciones)
 ***
-#### Borrar un vendedor por RUT.
+#### 4) Borrar un vendedor por RUT.
 Elimina un vendedor dado un RUT que escribas. [Ver recomendaciones.](https://github.com/mcanario01/manejador-de-ventas-IIE344-1-2S22#recomendaciones)
 ***
-#### Listar todos los vendedores.
+#### 5) Listar todos los vendedores.
 Listará todos los vendedores actuales, escribirá por pantalla algo del tipo:
 ```bash
 N°	Nombre	Apelli.	Telefono	Direcc. Edad	Deuda	Profes.	RUT		Cuenta
@@ -71,13 +71,13 @@ N°	Nombre	Apelli.	Telefono	Direcc. Edad	Deuda	Profes.	RUT		Cuenta
 ```
 Nota que cada dato está separado por un tab, pero los datos podrán verse desplazados según el largo de estos (Ver recomendaciones para evitar descuadres).
 ***
-#### Crear un cliente
+#### 6) Crear un cliente
 Crea un cliente en un vendedor que elijas, te pedirá los datos y finalmente debes ingresar el numero de vendedor. [Ver recomendaciones.](https://github.com/mcanario01/manejador-de-ventas-IIE344-1-2S22#recomendaciones)
 ***
-#### Buscar un cliente por RUT.
+#### 7) Buscar un cliente por RUT.
 Encuentra un cliente dado un RUT que escribas. [Ver recomendaciones.](https://github.com/mcanario01/manejador-de-ventas-IIE344-1-2S22#recomendaciones)
 ***
-#### Listar clientes por vendedor.
+#### 8) Listar clientes por vendedor.
 Encuentra todos los clientes de un vendedor dado, debes ingresar el número de vendedor.
 ***
 ## Recomendaciones: 
