@@ -142,8 +142,11 @@ int main(int argc, char *argv[])
 				int opcion_listado_clientes;
 				scanf("%d", &opcion_listado_clientes);
 				Vendedor vendedor_aux = recupera(opcion_listado_clientes, vendedores);
-				
+
 				borrar(vendedor_aux, vendedor_aux.clientes);
+				
+				suprime(opcion_listado_clientes, vendedores);
+				inserta(vendedor_aux, opcion_listado_clientes, vendedores);
 				printf("\n");
 				break;
 			}
