@@ -1,8 +1,9 @@
 
 V	Marcela	Ramirez	29853712	Mariano	20	100	Psico	23981265	48102
 C	Francia	Arias	73979490	Mariano	40	100	Secre	13827398	3/07/22	23981265
-V	Roberto	Saldia	20517748	SantaRo	20	23	Saul	31827856	319820
-C	Juanito	Juanes	47593758	Temuco	20	23	Gafiter	86593759	Mañana	31827856
+V	Roberto	Saldia	20517748	SantaRo	20	143	Saul	31827856	319820
+C	Juanito	Golondr	47593758	Temuco	20	23	Gafiter	86593759	Mañana	31827856
+C	Cata	Vasquez	31298748	Lautaro	20	120	Estudia	39128876	Hoy	31827856
 V	Martin	Canario	21398173	Puyehue	22	198	Telemat	39182735	3019289
 C	Jose	Luis	72947298	Puyehue	55	0	Jefe	83639345	6/12/22	39182735
 C	Karen	Dauros	48485758	Puyehue	49	100	Enferme	90413844	17/5/22	39182735
